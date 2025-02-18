@@ -20,7 +20,7 @@ const studentSchema = new Schema({
     type: String,
     required: true,
   },
-  enrolled_courses: [],
+  enrolled_courses: [{}],
 });
 
 studentSchema.pre("save", async function (next) {

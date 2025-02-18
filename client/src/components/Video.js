@@ -8,14 +8,57 @@ function Video() {
   const [showTranslate, setShowTranslate] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("HTML");
 
-  const handleTranscribeClick = () => {
-    setShowTranscribe(true);
-    setShowTranslate(false);
+  const handleTranscribeClick = async (src) => {
+    // setShowTranscribe(true);
+    // setShowTranslate(false);
+    try {
+      // Fetch the file from the local assets folder
+      const res = await fetch("/assets/video/audio_output.wav");
+      const blob = await res.blob();
+      const file = new File([blob], "audio_output.wav", { type: "audio/wav" });
+
+      const formData = new FormData();
+      formData.append("audio", file);
+      const response = await fetch("http://localhost:5001/transcribe", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log(data.transcript);
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("failed to upload file.");
+    }
   };
 
-  const handleTranslateClick = () => {
-    setShowTranslate(true);
-    setShowTranscribe(false);
+  const handleTranslateClick = async () => {
+    // setShowTranslate(true);
+    // setShowTranscribe(false);
+    const text =
+      "Let's start with HTML. HTML stands for hypertext markup language. And no, HTML is not a programming language, but it is such a huge part of the building blocks when it comes to the web. Without HTML, honestly, the web would I don't even know what it would look like. HTML at the core is a huge part of the web.HTML uses different tags and elements to identify what you see on screen. So for example, if you are looking to have a paragraph on screen, you would use the p tag. If you are looking to have an image on screen, you would use the I m g tag. These tags will show exactly what it is you are trying to show to the user. I like to think of HTML as a way to have different instructions as to what to show to the user. So for example, as I mentioned, the p tag to show paragraphs, the I m g to show images, and it's a really great way to think of HTML as kind of a set of instructions.";
+    const targetLang = "hi";
+    try {
+      const response = await fetch("http://localhost:5001/translate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text, lang: targetLang }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log(data.translated_text);
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to translate text.");
+    }
   };
 
   const handleTopicSelect = (topic) => {
@@ -94,7 +137,10 @@ JavaScript has many different frameworks and libraries that can be used, with it
           </p>
         </div>
         <div>
-          <button className="btn btn-large" onClick={handleTranscribeClick}>
+          <button
+            className="btn btn-large"
+            onClick={() => handleTranscribeClick(src)}
+          >
             Transcribe Video
           </button>
           <button className="btn btn-large ml-3" onClick={handleTranslateClick}>

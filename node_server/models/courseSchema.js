@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 // const secretKey = process.env.JWT_KEY;
+
 const courseSchema = new Schema({
   course_name: {
     type: String,

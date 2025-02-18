@@ -12,6 +12,8 @@ import "./App.css";
 import Chatbot from "./components/Chatbot";
 import CourseDetails from "./components/CourseDetails";
 import Video from "./components/Video";
+import Dashboard from "./components/Dashboard";
+// import "./App.scss";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/Video" element={<Video />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       <Chatbot />
