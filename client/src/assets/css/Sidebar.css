@@ -1,45 +1,42 @@
 /* src/components/Sidebar.css */
 .sidebar {
-    width: 250px;
-    background-color: #f3f3f3;
-    /* padding: 20px; */
-  }
-  
-  .sidebar h3 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-    /* padding-top: 5px; */
-  }
-  .sidebar-heading
-  {
-    padding-top: 20px;
-    border-bottom: 2px solid black;
-    text-align: center;
-    /* vertical-align: text-bottom; */
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    margin:10px 0px 10px 10px;
-    font-size: 1.5rem;
-    
+  width: 300px;
+  background-color: #f3f3f3;
+  /* padding: 20px; */
+}
+
+.sidebar h3 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  /* padding-top: 5px; */
+}
+.sidebar-heading {
+  padding-top: 20px;
+  border-bottom: 2px solid black;
+  text-align: center;
+  /* vertical-align: text-bottom; */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  margin: 10px 0px 10px 10px;
+  font-size: 1.5rem;
 }
 
 .sidebar ul li {
-    border-bottom: 1px solid black;
-    margin: 10px 0;
-  }
-  .sidebar button{
-    text-decoration: none;
-    color: black;
-    border: 0;
-  }
-  .sidebar button:hover{
-    color: grey;
-  }
-  .sidebar ol li{
-    margin-left: 20px;
-    border: 0;
-    list-style-type: disc;
-  }
-  
+  border-bottom: 1px solid black;
+  margin: 10px 0;
+}
+.sidebar button {
+  text-decoration: none;
+  color: black;
+  border: 0;
+}
+.sidebar button:hover {
+  color: grey;
+}
+.sidebar ol li {
+  margin-left: 20px;
+  border: 0;
+  list-style-type: disc;
+}

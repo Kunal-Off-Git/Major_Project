@@ -1,0 +1,193 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "What's up",
+        "Good morning",
+        "Hi there"
+      ],
+      "responses": [
+        "Hello! Welcome to WebDev Learning. How can I help you today?",
+        "Hi there! Ready to learn web development?",
+        "Hey! What would you like to learn about web development?",
+        "Welcome! How can I assist you with web development today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Thanks, bye",
+        "Exit",
+        "Have a good day",
+        "Talk to you later"
+      ],
+      "responses": [
+        "Goodbye! Keep practicing your web development skills!",
+        "See you later! Don't forget to code everyday!",
+        "Bye! Come back when you have more questions!",
+        "Happy coding! See you next time!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thanks a lot",
+        "This is great",
+        "Appreciate it",
+        "Thanks for the help"
+      ],
+      "responses": [
+        "Happy to help you learn!",
+        "You're welcome! Keep coding!",
+        "My pleasure! Remember to practice regularly!",
+        "Glad I could help with your web development journey!"
+      ]
+    },
+    {
+      "tag": "html_basics",
+      "patterns": [
+        "What is HTML",
+        "HTML basics",
+        "How to start HTML",
+        "Teach me HTML",
+        "HTML tutorial",
+        "HTML fundamentals",
+        "Learn HTML",
+        "HTML for beginners"
+      ],
+      "responses": [
+        "HTML is the standard markup language for web pages. Would you like to start with basic tags?",
+        "HTML creates the structure of web pages. Shall we begin with document setup?",
+        "Let's learn HTML! We'll start with elements like <head>, <body>, and basic tags.",
+        "HTML is your first step in web development. Want to learn about tags and attributes?"
+      ]
+    },
+    {
+      "tag": "css_basics",
+      "patterns": [
+        "What is CSS",
+        "CSS tutorial",
+        "How to style webpage",
+        "CSS basics",
+        "Learn CSS",
+        "CSS for beginners",
+        "Styling websites",
+        "CSS fundamentals"
+      ],
+      "responses": [
+        "CSS styles your web pages. Let's start with selectors and properties!",
+        "CSS handles the design of websites. Want to learn about colors and layouts?",
+        "Ready to make your HTML beautiful with CSS? Let's explore styling basics!",
+        "CSS brings design to your website. Shall we begin with the box model?"
+      ]
+    },
+    {
+      "tag": "javascript_basics",
+      "patterns": [
+        "What is JavaScript",
+        "JS tutorial",
+        "How to start JavaScript",
+        "JavaScript basics",
+        "Learn JS",
+        "JavaScript for beginners",
+        "JS fundamentals",
+        "Programming basics"
+      ],
+      "responses": [
+        "JavaScript makes websites interactive. Let's start with variables and functions!",
+        "Ready to add behavior to your website? Let's learn JavaScript basics!",
+        "JavaScript is essential for modern web development. Shall we begin with syntax?",
+        "Let's make your website dynamic with JavaScript! Want to start with basic concepts?"
+      ]
+    },
+    {
+      "tag": "frameworks",
+      "patterns": [
+        "Which framework to learn",
+        "React or Angular",
+        "Best framework for beginners",
+        "Popular frameworks",
+        "Framework comparison",
+        "Learn React",
+        "Vue vs React",
+        "Frontend frameworks"
+      ],
+      "responses": [
+        "For beginners, React is recommended due to its easier learning curve and large community.",
+        "Popular frameworks include React, Angular, and Vue. React is great for beginners!",
+        "I suggest starting with React. It's widely used and has excellent documentation.",
+        "Each framework has its strengths: React for flexibility, Angular for enterprise, Vue for simplicity."
+      ]
+    },
+    {
+      "tag": "projects",
+      "patterns": [
+        "Project ideas",
+        "What to build",
+        "Practice projects",
+        "Portfolio suggestions",
+        "Beginner projects",
+        "What should I code",
+        "Project examples",
+        "Learning projects"
+      ],
+      "responses": [
+        "Try building: 1. Personal portfolio 2. To-do app 3. Weather app 4. Quiz application",
+        "Start with a blog site using HTML/CSS, then add JavaScript functionality!",
+        "Great beginner projects: 1. Recipe website 2. Task manager 3. Social media clone",
+        "Build a portfolio website to showcase your skills while learning!"
+      ]
+    },
+    {
+      "tag": "learning_path",
+      "patterns": [
+        "How to become developer",
+        "Learning roadmap",
+        "Where to start",
+        "Study plan",
+        "Career path",
+        "Learning order",
+        "What to learn first",
+        "Development roadmap"
+      ],
+      "responses": [
+        "Start with: 1. HTML/CSS 2. JavaScript 3. Responsive design 4. React 5. Backend basics",
+        "The path is: Frontend basics → JavaScript → Framework → Backend → DevOps",
+        "Begin with HTML/CSS, then JavaScript, followed by a framework like React",
+        "Focus on HTML/CSS first, then JavaScript. After that, choose a framework!"
+      ]
+    },
+    {
+      "tag": "resources",
+      "patterns": [
+        "Learning resources",
+        "Where to learn",
+        "Best tutorials",
+        "Recommended courses",
+        "Free resources",
+        "Learning materials",
+        "Documentation",
+        "Tutorial sites"
+      ],
+      "responses": [
+        "Great resources include: MDN Web Docs, freeCodeCamp, and W3Schools",
+        "Try these platforms: Codecademy, MDN Web Docs, and YouTube tutorials",
+        "Start with MDN Web Docs for comprehensive guides and freeCodeCamp for practice",
+        "Check out: 1. freeCodeCamp 2. MDN Docs 3. W3Schools 4. YouTube tutorials"
+      ]
+    }
+  ]
+}

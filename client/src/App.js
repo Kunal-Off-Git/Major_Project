@@ -16,7 +16,7 @@ import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <Router>
+    <>
       {/* <Header /> */}
       <main>
         <Routes>
@@ -28,12 +28,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/Video" element={<Video />} />
-          <Route path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </main>
       <Chatbot />
       {/* <Footer /> */}
-    </Router>
+    </>
   );
 }
 
