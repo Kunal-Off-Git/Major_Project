@@ -1,31 +1,73 @@
-// app.js
 const express = require("express");
-const app = express();
-const PORT = process.env.PORT || 5000;
-
+const cors = require("cors");
 const mongoose = require("mongoose");
-const dbUrl = process.env.DB_URL;
-const localDB = "mongodb://127.0.0.1:27017/education";
-mongoose.connect(localDB);
+const UserModel = require("./models/User");
+
+const app = express();
+const PORT = 5000;
+
+// Use environment variable if available
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/User";
+
+// MongoDB Connection
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error"));
+db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => {
   console.log("Database Connected");
 });
 
-// Middleware to parse JSON requests
+// Middleware
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
+// Routes
 app.get("/", (req, res) => {
   res.send("<h3>Port is Working :)</h3>");
-  //   res.json({ message: "Welcome to the Node.js backend!" });
 });
+
 app.get("/help", (req, res) => {
-  res.send("<h1>what do you need?</h1>");
-  //   res.json({ message: "Welcome to the Node.js backend!" });
+  res.send("<h1>What do you need?</h1>");
 });
-// Start the server
+
+app.post("/login",(req,res)=>{
+  const{email,password}=req.body;
+  UserModel.findOne({email:email})
+  .then(user=>{
+    if(user)
+    {
+      if(user.password===password)
+      {
+        res.json("success")
+      }
+      else
+      {
+        res.json("the password is incorrect")
+      }
+    }
+    else
+    {
+      res.json("no record existed")
+    }
+  })
+})
+
+app.post("/register", (req, res) => {
+  console.log("Received registration request:", req.body);
+  
+  UserModel.create(req.body)
+    .then((user) => {
+      console.log("User created:", user);
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error("Error creating user:", err);
+      res.status(500).json({ error: "Failed to register user" });
+    });
+});
+
+// Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
