@@ -13,11 +13,10 @@ import Chatbot from "./components/Chatbot";
 import CourseDetails from "./components/CourseDetails";
 import Video from "./components/Video";
 import Dashboard from "./components/Dashboard";
-// import "./App.scss";
 
 function App() {
   return (
-    <Router>
+    <>
       {/* <Header /> */}
       <main>
         <Routes>
@@ -34,7 +33,7 @@ function App() {
       </main>
       <Chatbot />
       {/* <Footer /> */}
-    </Router>
+    </>
   );
 }
 

@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import "../assets/css/Video.css";
+import Header from "./Header";
 
 function Video() {
-  const [showTranscribe, setShowTranscribe] = useState(false);
+  const [showTranscribe, setShowTranscribe] = useState(true);
   const [showTranslate, setShowTranslate] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("HTML");
 
@@ -119,39 +120,77 @@ JavaScript has many different frameworks and libraries that can be used, with it
   const { src, transcription, translation } = videoData[selectedTopic];
 
   return (
-    <div className="main-container">
-      <Sidebar onTopicSelect={handleTopicSelect} />
-      <div className="video-content">
-        <div className="video-player">
-          {/* Add a unique key prop to force re-render */}
-          <video key={selectedTopic} controls width="100%" height="500px">
-            <source src={src} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div className="course-details">
-          <h3>{selectedTopic} for Web Developers</h3>
-          <p>
-            Learn {selectedTopic.toLowerCase()} in 1 hour with simple-to-use
-            rules and guidelines.
-          </p>
-        </div>
-        <div>
-          <button
-            className="btn btn-large"
-            onClick={() => handleTranscribeClick(src)}
-          >
-            Transcribe Video
-          </button>
-          <button className="btn btn-large ml-3" onClick={handleTranslateClick}>
-            Translate Video to Hindi
-          </button>
-
-          {showTranscribe && <div className="transcribed">{transcription}</div>}
-          {showTranslate && <div className="translate">{translation}</div>}
+    <>
+      <Header />
+      <header className="header-video"></header>
+      <div className="main-container">
+        <Sidebar onTopicSelect={handleTopicSelect} />
+        <div className="video-content">
+          <h3 className="video-heading">{selectedTopic} for Web Developers</h3>
+          <div className="video-player">
+            {/* Add a unique key prop to force re-render */}
+            <video key={selectedTopic} controls width="100%" height="500px">
+              <source src={src} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          {/* <div className="course-details">
+             <h3>{selectedTopic} for Web Developers</h3> *
+            <p>
+              Learn {selectedTopic.toLowerCase()} in 1 hour with simple-to-use
+              rules and guidelines.
+            </p>
+          </div> */}
+          <div className="controls-section">
+            {/* <button
+              className="btn btn-large"
+              onClick={() => handleTranscribeClick(src)}
+            >
+              Transcribe Video
+            </button> */}
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Transcript
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    English
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Hindi
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Something else here
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <button
+              className="btn btn-large ml-3"
+              onClick={handleTranslateClick}
+            >
+              Translate Video to Hindi
+            </button>
+          </div>
+          <div className="content-section">
+            {showTranscribe && (
+              <div className="transcribed">{transcription}</div>
+            )}
+            {showTranslate && <div className="translate">{translation}</div>}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
