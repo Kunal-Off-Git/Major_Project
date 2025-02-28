@@ -2,6 +2,8 @@
 node_server/node_modules
 flask_server/venv
 client/node_modules
+vite-client/node_modules
+node_modules
 # Environment variables
 .env
 
