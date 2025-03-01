@@ -39,7 +39,7 @@ app.post("/login",(req,res)=>{
     {
       if(user.password===password)
       {
-        res.json("success")
+        res.json("success") 
       }
       else
       {
