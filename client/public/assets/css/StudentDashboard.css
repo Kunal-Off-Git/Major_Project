@@ -1,0 +1,347 @@
+
+/* Global Styles */
+
+
+/* StudentDashboard.css */
+
+/* Global Styles */
+body {
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack children vertically */
+    height: 100vh; /* Full height */
+}
+
+/* Top Navbar */
+.top-navbar {
+    width: 100%; /* Full width */
+    background-color: #ffffff; /* Background color */
+    padding: 10px 20px; /* Padding for the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.navbar-content {
+    display: flex; /* Use flexbox for layout */
+    width: 100%;
+    justify-content: space-between; /* Space between title and actions */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-title {
+    font-size: 24px; /* Title font size */
+    font-weight: bold; /* Title font weight */
+}
+
+.navbar-actions {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    gap: 1rem; /* Space between icons */
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: flex; /* Use flexbox for layout */
+    flex: 1; /* Allow it to grow */
+}
+
+
+
+
+/* Main Content */
+.main-content {
+    flex: 1; /* Take the remaining space */
+    padding: 20px; /* Padding */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* StudentDashboard.css */
+
+/* Stats Container */
+.stats-container {
+    margin-bottom: 1.5rem; /* Space below the stats section */
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1.5rem; /* Space between grid items */
+}
+
+/* Stat Card */
+.stat-card {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 1rem; /* Padding inside cards */
+    border-radius: 0.5rem; /* Rounded corners */
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items vertically */
+}
+
+/* Other styles as needed... */
+
+
+/*new*/
+
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #6610f2, #d63384);
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(228, 220, 220, 0.1);
+}
+
+
+
+.navbar-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-form {
+    display: flex;
+}
+
+.search-input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.notification-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+
+body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+}
+
+/* General styles for the dashboard */
+.dashboard-container {
+    border: 1 px solid #050608;
+    display: flex; /* Use flexbox for layout */
+    height: 100vh; /* Full height of the viewport */
+}
+
+
+
+
+   
+/* Card styles */
+.card {
+    background-color: rgb(146, 109, 109);
+    border: 1 px solid black;
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 1px 3px var(--color-shadow-light); /* Light shadow */
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px var(--color-shadow); /* Darker shadow on hover */
+}
+
+/* Progress Bar */
+.progress-bar {
+    background-color: var(--color-gray-100); /* Light gray */
+    border-radius: 9999px; /* Fully rounded */
+    height: 0.5rem; /* Height of the progress bar */
+    overflow: hidden; /* Hide overflow */
+}
+
+.progress-bar-fill {
+    height: 100%; /* Fill the height of the progress bar */
+    border-radius: 9999px; /* Fully rounded */
+}
+
+/* Animation Classes */
+.transition-standard {
+    transition: all 0.2s ease-in-out;
+}
+
+/* CSS Variables */
+:root {
+    /* Primary Colors */
+    --color-primary-50: #f0f6ff;
+    --color-primary-100: #e0edff;
+    --color-primary-200: #c7d9ff;
+    --color-primary-300: #a5c4ff;
+    --color-primary-400: #7ea6ff;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a8a;
+
+    /* Gray Colors */
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+
+    /* Accent Colors */
+    --color-red-500: #ef4444;
+    --color-red-600: #dc2626;
+    --color-green-500: #22c55e;
+    --color-green-600: #16a34a;
+
+    /* Background Colors */
+    --color-background-primary: var(--color-gray-50);
+    --color-background-secondary: white;
+    --color-background-accent: var(--color-primary-50);
+
+    /* Text Colors */
+    --color-text-primary: var(--color-gray-900);
+    --color-text-secondary: var(--color-gray-600);
+    --color-text-accent: var(--color-primary-600);
+
+    /* Border Colors */
+    --color-border-light: var(--color-gray-200);
+    --color-border-medium: var(--color-gray-300);
+
+    /* Shadow Colors */
+    --color-shadow: rgb(0 0 0 / 0.1);
+    --color-shadow-light: rgb(0 0 0 / 0.05);
+}
+
+/* Custom Classes */
+.gradient-text {
+    background: linear-gradient(to right, var(--color-primary-600), var(--color-primary-800));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.progress-bar-gradient {
+    background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+}
+
+/* Hover Effects */
+.hover-shadow {
+    transition: all 0.3s ease;
+}
+
+.hover-shadow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px var(--color-shadow-light);
+}
+
+/* StudentDashboard.css */
+
+/* Header styles */
+.header {
+    background: linear-gradient(135deg, #6610f2, #d63384);
+    color: white;
+    padding: 1rem; /* Padding for the header */
+    box-shadow: 0 1px 2px rgba(201, 190, 190, 0.1); /* Light shadow */
+    
+
+  }
+
+  .header-title {
+      color: white;
+  }
+  
+  .header-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between title and actions */
+    align-items: center; /* Center items vertically */
+    
+  }
+  
+  .header-actions {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Center items vertically */
+    gap: 1rem; /* Space between icons */
+  }
+  
+  .notification-button {
+    background: rgb(159, 103, 103); /* Remove default button background */
+    border: 1px solid black; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer */
+  }
+  
+
+  
+
+  /* StudentDashboard.css */
+
+/* Stats Container */
+.stats-container {
+    margin-bottom: 1.5rem; /* Space below the stats section */
+    border: 1 px solid #1f2937;
+  }
+  
+  /* Stats Row */
+  .stats-row {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between cards */
+    margin-bottom: 1rem; /* Space between rows */
+  }
+
+
+  /* Card styles (if not already defined) */
+  .card {
+    background-color: var(--color-background-secondary);
+    border: 1 px solid rgb(16, 14, 14);
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 1px 3px var(--color-shadow-light); /* Light shadow */
+    transition: all 0.3s ease;
+    flex: 1; /* Allow cards to grow and fill space */
+    min-width: 150px; /* Minimum width for cards */
+    padding: 1rem; /* Padding inside cards */
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 6px -1px var(--color-shadow); /* Darker shadow on hover */
+  }
+
+  .cd{
+   background-color: rgb(240, 230, 232);
+  }
+  
+
+
+
+  
+
+ 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 import axios from "axios";
 import Dashboard from "./Dashboard";
+import StudentDashboard from "./StudentDashboard";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Login() {
       .then((result) => {
         console.log(result);
         if (result.data === "success") {
-          navigate("/dashboard");
+          navigate("/StudentDashboard");
         }
       })
       .catch((err) => console.log(err));

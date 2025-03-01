@@ -1,0 +1,153 @@
+/* Schedule.css */
+
+
+
+.schedule-background {
+    background-color: #f9f9f9; /* Light background color */
+    padding: 20px; /* Padding around the schedule */
+
+    background: linear-gradient(135deg, #6610f2, #d63384);
+  }
+.sc{
+    background-color: linear-gradient(135deg, #6610f2, #d63384); /* Your desired gradient */
+    margin: 0;
+}
+
+.schedule-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #f9f9f9; /* Light background for the schedule container */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-title {
+  font-size: 4rem; /* Title font size */
+  margin-bottom: 20px; /* Space below the title */
+  color: #6610f2;
+  align-self: center;
+  justify-self: center;
+ 
+}
+
+.calendar-button {
+  margin: 0 10px; /* Space around buttons */
+  padding: 10px 15px; /* Button padding */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.section-title {
+  font-size: 2rem; /* Section title font size */
+  margin: 20px 0 10px; /* Space around section titles */
+  color: #6610f2;
+  align-self: center;
+  justify-self: center;
+}
+
+.test-list, .assignment-list, .lecture-list {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove padding */
+}
+
+.test-item, .assignment-item, .lecture-item {
+  padding: 10px; /* Padding for list items */
+  /* Bottom border for separation */
+}
+
+.test-item:last-child, .assignment-item:last-child, .lecture-item:last-child {
+  border-bottom: none; /* Remove border for last item */
+}
+
+
+
+
+.test-list li{
+  font-weight: 600;
+}
+
+.calendar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.day, .empty {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.empty {
+    background-color: transparent;
+}
+
+.day {
+    background-color: #e9ecef;
+}
+
+.test-day {
+    background-color: rgb(218, 58, 58); /* Red for test days */
+    color: white; /* Text color for better visibility */
+}
+
+.assignment-day {
+    background-color: rgb(79, 210, 79); /* Green for assignment days */
+    color: white; /* Text color for better visibility */
+}
+
+button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.event-label {
+    font-size: 10px;
+    color: white;
+    background-color: red; /* Change to your desired color */
+    padding: 2px;
+    border-radius: 3px;
+    margin-top: 2px;
+}
+
+.assignment-list {
+    /* Light green background */
+    padding: 10px;
+   
+}
+
+.assignment-list li {
+    color: black; /* Dark green text color */
+    font-weight:600;
+    margin: 5px 0;
+    margin-bottom: 5px;
+    padding: 5px;
+   /* Optional: border for each item */
+    border-radius: 4px;
+   
+}
+.bp-4rounded-lg-mb-4{
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+
+}
+.lecture-list{
+    font-weight: 600;
+   
+}
