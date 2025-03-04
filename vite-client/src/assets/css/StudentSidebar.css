@@ -1,0 +1,108 @@
+.sidebar {
+  background: linear-gradient(135deg, #6610f2, #d63384);
+  border-radius: 5px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  width: 20%; /* 30% width for the sidebar */
+  height: 20%; /* Full height */
+
+  position: relative; /* For absolute positioning of footer */
+  box-shadow: 2px 0 5px rgb(227, 221, 221); /* Shadow effect */
+}
+.sidebar-header {
+  padding: 2rem; /* Padding */
+}
+
+.sidebar-header {
+  color: white;
+}
+
+.sidebar-title {
+  font-size: 1.5rem; /* Font size */
+  font-weight: bold; /* Bold font */
+  color: white; /* Dark gray color */
+}
+
+.sidebar-nav {
+  margin-top: 1rem; /* Margin above nav */
+}
+
+.sidebar-nav {
+  color: white;
+}
+
+.sidebar-link {
+  display: flex; /* Flexbox for icon and label */
+  align-items: center;
+  align-items: center; /* Center items vertically */
+  padding: 0.75rem 1rem; /* Padding */
+  color: white;
+  text-decoration: none; /* Remove underline */
+  transition: all 0.2s ease-in-out; /* Transition for hover effects */
+}
+
+.sidebar-link:hover {
+  color: var(--color-text-accent); /* Change color on hover */
+  background-color: var(
+    --color-background-accent
+  ); /* Change background on hover */
+}
+
+.sidebar-link.active {
+  color: var(--color-primary-600); /* Active link color */
+  background-color: var(--color-primary-50); /* Active link background */
+  border-right: 4px solid var(--color-primary-600); /* Active link border */
+}
+
+.sidebar-header {
+  padding: 1rem; /* Padding */
+}
+
+.sidebar-header {
+  color: white;
+}
+
+.sidebar-title {
+  font-size: 1.5rem; /* Font size */
+  font-weight: bold; /* Bold font */
+  color: white; /* Dark gray color */
+}
+
+.sidebar-nav {
+  margin-top: 1rem; /* Margin above nav */
+}
+
+.sidebar-nav {
+  color: white;
+}
+
+.sidebar-link {
+  display: flex; /* Flexbox for icon and label */
+  align-items: center;
+  align-items: center; /* Center items vertically */
+  padding: 0.75rem 1rem; /* Padding */
+  color: white;
+  text-decoration: none; /* Remove underline */
+  transition: all 0.2s ease-in-out; /* Transition for hover effects */
+}
+
+.sidebar-link:hover {
+  color: var(--color-text-accent); /* Change color on hover */
+  background-color: var(
+    --color-background-accent
+  ); /* Change background on hover */
+}
+
+.sidebar-link.active {
+  color: var(--color-primary-600); /* Active link color */
+  background-color: var(--color-primary-50); /* Active link background */
+  border-right: 4px solid var(--color-primary-600); /* Active link border */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for sidebar */
+  background-color: #f8f9fa; /* Background color */
+  padding: 20px; /* Padding */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}

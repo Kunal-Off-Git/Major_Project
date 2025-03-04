@@ -17,7 +17,7 @@ function Login() {
       .then((result) => {
         console.log(result);
         if (result.data === "success") {
-          navigate("/dashboard");
+          navigate("/StudentDashboard");
         }
       })
       .catch((err) => console.log(err));

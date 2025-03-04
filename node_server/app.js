@@ -31,31 +31,24 @@ app.get("/help", (req, res) => {
   res.send("<h1>What do you need?</h1>");
 });
 
-app.post("/login",(req,res)=>{
-  const{email,password}=req.body;
-  UserModel.findOne({email:email})
-  .then(user=>{
-    if(user)
-    {
-      if(user.password===password)
-      {
-        res.json("success") 
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  UserModel.findOne({ email: email }).then((user) => {
+    if (user) {
+      if (user.password === password) {
+        res.json("success");
+      } else {
+        res.json("the password is incorrect");
       }
-      else
-      {
-        res.json("the password is incorrect")
-      }
+    } else {
+      res.json("no record existed");
     }
-    else
-    {
-      res.json("no record existed")
-    }
-  })
-})
+  });
+});
 
 app.post("/register", (req, res) => {
   console.log("Received registration request:", req.body);
-  
+
   UserModel.create(req.body)
     .then((user) => {
       console.log("User created:", user);

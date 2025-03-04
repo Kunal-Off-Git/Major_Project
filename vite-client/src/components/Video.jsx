@@ -239,7 +239,7 @@ JavaScript has many different frameworks and libraries that can be used, with it
           <h3 className="video-heading">{selectedTopic} for Web Developers</h3>
           <div className="video-player">
             {/* Add a unique key prop to force re-render */}
-            <video key={source} controls width="100%" height="500px">
+            <video key={source} controls width="100%" height="630px">
               <source src={source} type="video/mp4" />
               {/* <source
                 src="http://localhost:5001/uploads/translated_videos/translated_video_20250304114119_dcc0e2e1f06a4317adb9e698af39bc68.mp4"

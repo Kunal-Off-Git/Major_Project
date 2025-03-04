@@ -4,8 +4,8 @@ import "../assets/css/Sidebar.css";
 
 function Sidebar({ onTopicSelect }) {
   return (
-    <div className="sidebar">
-      <div className="sidebar-heading">
+    <div className="video-sidebar">
+      <div className="video-sidebar-heading">
         <h3>Course Content</h3>
       </div>
       <ul>

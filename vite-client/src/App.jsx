@@ -25,6 +25,7 @@ import { ResourcesPage } from "./teacherDashboard/pages/ResourcesPage.jsx";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min"; // Import JS bundle for dropdowns to work
 import "./App.css";
+import StudentDashboard from "./components/StudentDashboard.jsx";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/Video" element={<Video />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/StudentDashboard" element={<StudentDashboard />} />
           <Route path="/teacherDashboard/*" element={<DashboardLayout />}>
             <Route index element={<DashboardContent />} />
             <Route path="students" element={<StudentsPage />} />
