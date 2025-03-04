@@ -1,9 +1,22 @@
+import os
 from flask import Flask, render_template, request, jsonify
 import whisper
 from googletrans import Translator
 from flask_cors import CORS
 from chat import get_response
 import asyncio
+from moviepy import AudioFileClip,VideoFileClip,CompositeAudioClip
+from gtts import gTTS
+from pydub import AudioSegment
+from datetime import datetime
+import uuid
+from flask import send_from_directory
+# from moviepy.video.fx.all import audio_fadein
+
+UPLOAD_FOLDER = 'uploads'
+VIDEO_FOLDER = os.path.join(UPLOAD_FOLDER, 'videos')
+AUDIO_FOLDER = os.path.join(UPLOAD_FOLDER, 'audios')
+TRANSLATED_VIDEO_FOLDER = os.path.join(UPLOAD_FOLDER, 'translated_videos')
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +26,12 @@ model = whisper.load_model("base")
 
 # Initialize the Google Translator
 translator = Translator()
+
+# Generate unique filenames
+def generate_filename(base_name, folder, extension):
+    unique_id = uuid.uuid4().hex
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    return os.path.join(folder, f"{base_name}_{timestamp}_{unique_id}.{extension}")
 
 @app.get("/")
 def home():
@@ -33,28 +52,9 @@ def predict():
     message = {"answer":response}
     return jsonify(message)
 
+
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
-    # Check if the audio file is provided
-    if 'audio' not in request.files:
-        return jsonify({"error": "No audio file provided"}), 400
-    
-    # Get the audio file from the request
-    audio_file = request.files['audio']
-    audio_path = "temp_audio.wav"
-    audio_file.save(audio_path)
-
-    # Transcribe the audio file
-    transcription = model.transcribe(audio_path)
-    transcript_text = transcription["text"]
-
-    # Return the transcription as JSON
-    return jsonify({
-        "transcript": transcript_text
-    })
-
-@app.route('/translate', methods=['POST'])
-def translate():
     # Check if the transcript text is provided
     if not request.json or 'text' not in request.json:
         return jsonify({"error": "No text provided"}), 400
@@ -71,6 +71,80 @@ def translate():
     # Return the translated text as JSON
     return jsonify({
         "translated_text": translated.text
+    })
+
+# Serve uploaded files
+@app.route('/uploads/translated_videos/<path:filename>')
+def uploaded_file(filename):
+    return send_from_directory(TRANSLATED_VIDEO_FOLDER, filename)
+
+@app.route('/translate', methods=['POST'])
+def translate():
+    if 'video' not in request.files or 'text' not in request.form or 'lang' not in request.form:
+        return jsonify({"error": "Missing video, text, or language"}), 400
+    
+    video_file = request.files['video']
+    text_string = request.form['text']
+    target_language = request.form['lang']
+
+    translated = asyncio.run(translator.translate(text_string, dest=target_language))
+
+    audio_path = generate_filename('translated_audio', AUDIO_FOLDER, 'mp3')
+    tts = gTTS(translated.text)
+    tts.save(audio_path)
+
+    audio = AudioSegment.from_file(audio_path)
+    current_duration = len(audio) / 1000  # Convert duration from ms to seconds
+
+    # Process video
+    video_path = generate_filename('uploaded_video', UPLOAD_FOLDER, 'mp4')
+    video_file.save(video_path)
+    video_clip = VideoFileClip(video_path)
+    target_duration = video_clip.duration
+
+    # Adjust audio speed
+    speed_factor = current_duration/target_duration
+
+    # Adjust speed if needed
+    if speed_factor != 1.0:
+        adjusted_audio = audio.speedup(playback_speed=speed_factor)
+    else:
+        adjusted_audio = audio
+
+    # Save adjusted audio and merge with video
+    adjusted_audio_path = generate_filename('adjusted_audio', AUDIO_FOLDER, 'mp3')
+    adjusted_audio.export(adjusted_audio_path, format="mp3")
+    
+    audio_clip = AudioFileClip(adjusted_audio_path)
+
+    # final_video = video_clip.set_audio(audio_clip)
+    
+    # Combine video with audio
+    final_audio = CompositeAudioClip([audio_clip])
+    video_clip.audio = final_audio
+
+
+    output_video_path = generate_filename('translated_video', TRANSLATED_VIDEO_FOLDER, 'mp4')
+    video_clip.write_videofile(output_video_path, codec='libx264', audio_codec='aac')
+
+    file_name = os.path.basename(output_video_path)
+    public_url = f"http://localhost:5001/uploads/translated_videos/{file_name}"
+
+    # # Forcefully release the video file
+    # video_clip.reader.close()
+    # if video_clip.audio:
+    #     video_clip.audio.reader.close_proc()
+    # video_clip.close()
+    # audio_clip.close()
+
+    # # Cleanup temp files
+    # os.remove(video_path)
+    # os.remove(audio_path)
+    # os.remove(adjusted_audio_path)
+
+    return jsonify({
+        "message": "Video translated and processed successfully",
+        "translated_video_path": public_url
     })
 
 

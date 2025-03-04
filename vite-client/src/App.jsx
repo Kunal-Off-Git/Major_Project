@@ -8,7 +8,6 @@ import Contact from "./components/Contact.jsx";
 import Login from "./components/Login.jsx";
 import Courses from "./components/Courses.jsx";
 import Register from "./components/Register.jsx";
-import "./App.css";
 import Chatbot from "./components/Chatbot.jsx";
 import CourseDetails from "./components/CourseDetails.jsx";
 import Video from "./components/Video.jsx";
@@ -23,6 +22,9 @@ import { SettingsPage } from "./teacherDashboard/pages/SettingsPage.jsx";
 import { CourseUploadPage } from "./teacherDashboard/pages/CourseUploadPage.jsx";
 import { StudentProgressPage } from "./teacherDashboard/pages/StudentProgressPage.jsx";
 import { ResourcesPage } from "./teacherDashboard/pages/ResourcesPage.jsx";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min"; // Import JS bundle for dropdowns to work
+import "./App.css";
 
 function App() {
   return (

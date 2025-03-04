@@ -15,7 +15,7 @@ import Video from "./components/Video";
 import Dashboard from "./components/Dashboard";
 import StudentDashboard from "./components/StudentDashboard";
 import EditProfile from "./components/EditProfile";
-import Logout from './components/Logout';
+import Logout from "./components/Logout";
 import Schedule from "./components/Schedule";
 
 function App() {
@@ -33,8 +33,8 @@ function App() {
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/Video" element={<Video />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/StudentDashboard" element={<StudentDashboard/>}/>
-          <Route path="/EditProfile" element={<EditProfile/>}/>
+          <Route path="/StudentDashboard" element={<StudentDashboard />} />
+          <Route path="/EditProfile" element={<EditProfile />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>

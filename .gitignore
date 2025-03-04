@@ -4,6 +4,10 @@ flask_server/venv
 client/node_modules
 vite-client/node_modules
 node_modules
+flask_server/uploads/audios
+flask_server/uploads/videos
+flask_server/uploads/translated_videos
+
 # Environment variables
 .env
 
