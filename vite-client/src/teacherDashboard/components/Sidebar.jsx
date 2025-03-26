@@ -14,6 +14,8 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { useApp } from "../context/AppContext";
+import { Button } from "react-bootstrap";
+import logo from "../../assets/img/logo/logo.png";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/" },
@@ -28,6 +30,61 @@ const menuItems = [
 ];
 
 export const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { setUser } = useApp();
+
+  const handleSignOut = () => {
+    setUser(null);
+    navigate("/login");
+  };
+
+  return (
+    <div
+      className="d-flex flex-column bg-gradient text-white"
+      style={{
+        width: "16rem",
+        height: "100vh",
+        background: "linear-gradient(to bottom, #4318FF, #868CFF)",
+      }}
+    >
+      <div className="p-4">
+        {/* <h1 className="fs-4 fw-bold text-white">TeacherHub</h1> */}
+        <div className="sidebar-logo">
+          <img src={logo} alt="" />
+        </div>
+      </div>
+      <nav className="flex-grow-1 px-3">
+        {menuItems.map((item) => (
+          <Link
+            key={item.label}
+            to={`/teacherDashboard/${item.path}`}
+            className={`d-flex align-items-center p-3 rounded text-decoration-none ${
+              location.pathname === `/teacherDashboard/${item.path}`
+                ? "bg-white bg-opacity-5 sidebar-active"
+                : "text-white-70 text-opacity-70 hover:bg-white hover:bg-opacity-10"
+            }`}
+          >
+            <item.icon className="me-3" size={20} />
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <div className="p-4 sign-out">
+        <Button
+          onClick={handleSignOut}
+          className=" btn-d d-flex align-items-center w-100 text-white text-opacity-70 hover:text-white hover:bg-white hover:bg-opacity-10"
+          variant="link"
+        >
+          <LogOut className="me-3" size={20} />
+          Sign Out
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export const Sidebar5 = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { setUser } = useApp();

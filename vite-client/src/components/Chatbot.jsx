@@ -12,12 +12,13 @@ const Chatbot = () => {
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
+    console.log("clicked");
 
     const userMessage = { name: "User", message: inputValue };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
     // Send message to the server and handle the response
-    fetch("http://127.0.0.1:5000/predict", {
+    fetch("http://127.0.0.1:5001/predict", {
       method: "POST",
       body: JSON.stringify({ message: inputValue }),
       headers: {

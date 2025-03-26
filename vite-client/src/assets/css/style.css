@@ -7624,3 +7624,139 @@ html {
   opacity: 0.7;
   line-height: 1.5rem;
 }
+
+/*teachers dashboard css*/
+
+.sidebar-active {
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* .btn-d {
+  background: #2563eb;
+}
+
+.btn-d:hover{
+  background-color: red;
+} */
+.btn-d {
+  background: #2563eb;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: capitalize;
+  padding: 25px 38px !important;
+  color: #fff;
+  cursor: pointer;
+  display: inline-blockc !important;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  line-height: 1;
+  -moz-user-select: none;
+  letter-spacing: 1px;
+  line-height: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+  display: inline-block !important;
+}
+
+.btn-d::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #022c87;
+  z-index: 1;
+  border-radius: 5px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+}
+
+.btn:hover {
+  background-position: right;
+  background-color: 2563eb;
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1;
+}
+
+.quick-actions button {
+  margin-bottom: 10px;
+  position: relative;
+  height: 80px;
+}
+
+.btn-d svg {
+  color: white;
+  margin-left: 0;
+  position: absolute;
+  left: 20px;
+  top: 30px;
+}
+
+.students-page button {
+  margin-bottom: 10px;
+  position: relative;
+  height: 60px;
+}
+
+.students-page button svg {
+  color: white;
+  margin-left: 0;
+  position: absolute;
+  left: 10px;
+  top: 18px;
+}
+.student-search button {
+  margin-bottom: 10px;
+  position: relative;
+  height: 40px;
+}
+.student-search button svg {
+  color: white;
+  margin-left: 0;
+  position: absolute;
+  left: 10px;
+  top: 15px;
+}
+.search-bar input {
+  /* background: red; */
+  padding-right: 50px;
+  position: absolute;
+  left: 30px;
+  top: -15px;
+}
+.search-bar svg {
+  left: 0px;
+  top: -13px;
+  position: absolute;
+}
+.sidebar-logo img {
+  height: auto;
+  width: 100px;
+}
+
+.sign-out button {
+  margin-bottom: 10px;
+  position: relative;
+  height: 40px;
+}
+.sign-out button svg {
+  left: 10px;
+  top: 15px;
+  position: absolute;
+}

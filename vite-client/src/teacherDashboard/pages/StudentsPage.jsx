@@ -1,6 +1,7 @@
 // StudentsPage.jsx
 import React, { useState } from "react";
 import { Search, Filter, Download, Plus } from "lucide-react";
+import { Button, Table, Form, Card } from "react-bootstrap";
 
 const studentData = [
   {
@@ -19,10 +20,119 @@ export const StudentsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
+    <div className="container py-4">
+      <div className="d-flex justify-content-between align-items-center mb-4 students-page">
+        <h1 className="fw-bold text-dark">Students</h1>
+        <Button variant="primary" className="d-flex align-items-center btn-d">
+          <Plus className="me-2" /> Add Student
+        </Button>
+      </div>
+
+      <Card className="mb-4 shadow-sm">
+        <Card.Body>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <Form.Group className="position-relative w-50 search-bar">
+              <Search className="position-absolute  start-0 translate-middle-y text-secondary" />
+              <Form.Control
+                type="text"
+                placeholder="Search students..."
+                className="ps-5"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </Form.Group>
+
+            <div className="d-flex gap-2 student-search">
+              <Button
+                variant="outline-secondary"
+                className="d-flex align-items-center btn-d"
+              >
+                <Filter className="me-2" /> Filter
+              </Button>
+              <Button
+                variant="outline-secondary"
+                className="d-flex align-items-center btn-d"
+              >
+                <Download className="me-2" /> Export
+              </Button>
+            </div>
+          </div>
+
+          <div className="table-responsive">
+            <Table hover>
+              <thead className="table-light">
+                <tr>
+                  <th>Student</th>
+                  <th>Grade</th>
+                  <th>Performance</th>
+                  <th>Attendance</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {studentData.map((student) => (
+                  <tr key={student.id}>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={student.avatar}
+                          alt=""
+                          className="rounded-circle me-3"
+                          width="40"
+                          height="40"
+                        />
+                        <span className="fw-medium text-dark">
+                          {student.name}
+                        </span>
+                      </div>
+                    </td>
+                    <td>{student.grade}</td>
+                    <td>
+                      <div className="progress" style={{ height: "10px" }}>
+                        <div
+                          className="progress-bar bg-primary"
+                          role="progressbar"
+                          style={{ width: `${student.performance}%` }}
+                          aria-valuenow={student.performance}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        ></div>
+                      </div>
+                      <span className="small text-muted">
+                        {student.performance}%
+                      </span>
+                    </td>
+                    <td>{student.attendance}%</td>
+                    <td>
+                      <span
+                        className={`badge ${
+                          student.status === "Active"
+                            ? "bg-success"
+                            : "bg-secondary"
+                        }`}
+                      >
+                        {student.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+};
+
+export const StudentsPage2 = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  return (
     <div className="p-6 max-w-full">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold text-gray-800">Students</h1>
-        <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 ">
           <Plus className="w-5 h-5 mr-2" /> Add Student
         </button>
       </div>

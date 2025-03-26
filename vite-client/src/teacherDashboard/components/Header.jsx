@@ -3,8 +3,49 @@ import React from "react";
 import { Search } from "lucide-react";
 import { NotificationsDropdown } from "./NotificationsDropdown";
 import { useApp } from "../context/AppContext";
+import { Form, InputGroup, Image } from "react-bootstrap";
 
 export const Header = () => {
+  const { user } = useApp();
+  if (!user) return null;
+
+  return (
+    <header className="bg-white shadow-sm px-4 py-3">
+      <div className="d-flex justify-content-between align-items-center">
+        <InputGroup className="w-50" style={{ maxWidth: "16rem" }}>
+          <InputGroup.Text className="bg-light border-0">
+            <Search size={16} className="text-secondary" />
+          </InputGroup.Text>
+          <Form.Control
+            type="text"
+            placeholder="Search..."
+            className="bg-light border-0 rounded-3"
+          />
+        </InputGroup>
+
+        <div className="d-flex align-items-center gap-4">
+          <NotificationsDropdown />
+          <div className="d-flex align-items-center gap-3">
+            <Image
+              src={user.avatar}
+              alt="Profile"
+              roundedCircle
+              width={40}
+              height={40}
+              className="border border-primary border-opacity-25"
+            />
+            <div>
+              <p className="mb-0 fw-semibold text-dark">{user.name}</p>
+              <p className="mb-0 text-muted small">{user.role}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export const Header2 = () => {
   const { user } = useApp();
   if (!user) return null;
 
