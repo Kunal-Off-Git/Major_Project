@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/bootstrap.min.css";
 // import './assets/css/owl.carousel.min.css';
@@ -17,6 +18,31 @@ import "../assets/css/style.css";
 import courses from "../data.js";
 
 function Home() {
+
+  const LoginDropdown = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    return (
+      <div className="dropdown">
+        <button className="btn btn3" onClick={() => setIsOpen(!isOpen)}>
+          Login
+        </button>
+        
+        {isOpen && (
+          <ul className="dropdown-menu">
+            <li>
+              <a href="/login/teacher" id="dropdown-item1">Login as Teacher</a>
+            </li>
+            <li>
+              <a href="/register" id="dropdown-item1">Login as Student</a>
+            </li>
+          </ul>
+        )}
+      </div>
+    );
+  }
+
   return (
     <>
       {/* ? Preloader Start */}
@@ -91,12 +117,7 @@ function Home() {
                               </a>
                             </li>
                             <li className="button-header">
-                              {/* <a href="login.html" className="btn btn3">
-                            Log in
-                          </a> */}
-                              <Link to="/login" className="btn btn3">
-                                Login
-                              </Link>
+                                <LoginDropdown/>
                             </li>
                           </ul>
                         </nav>

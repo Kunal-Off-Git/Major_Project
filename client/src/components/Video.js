@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import "../assets/css/Video.css";
 import Header from "./Header";
+import Quiz from "./Quiz";
+import questions from "./questions";
 
 function Video() {
   const [showTranscribe, setShowTranscribe] = useState(false);
   const [showTranslate, setShowTranslate] = useState(true);
   const [selectedTopic, setSelectedTopic] = useState("HTML");
   const [transcribe, setTranslate] = useState("");
+  const [showQuiz, setShowQuiz] = useState(false); // State to control quiz visibility
 
   const handleTranscribeClick = async (src) => {
     // setShowTranscribe(true);
@@ -68,6 +71,11 @@ function Video() {
     setSelectedTopic(topic);
     setShowTranscribe(false);
     setShowTranslate(false);
+    setShowQuiz(false);
+  };
+
+  const handleStartQuiz= ()=>{
+    setShowQuiz(true);
   };
 
   const videoData = {
@@ -126,8 +134,12 @@ JavaScript has many different frameworks and libraries that can be used, with it
       <Header />
       <header className="header-video"></header>
       <div className="main-container">
-        <Sidebar onTopicSelect={handleTopicSelect} />
+        <Sidebar onTopicSelect={handleTopicSelect} onStartQuiz={handleStartQuiz} />
         <div className="video-content">
+        {showQuiz? (
+          <Quiz questions={questions}/>)
+          :( 
+            <>
           <h3 className="video-heading">{selectedTopic} for Web Developers</h3>
           <div className="video-player">
             {/* Add a unique key prop to force re-render */}
@@ -190,6 +202,7 @@ JavaScript has many different frameworks and libraries that can be used, with it
             )}
             {showTranslate && <div className="translate">{transcribe}</div>}
           </div>
+          </>)}
         </div>
       </div>
     </>

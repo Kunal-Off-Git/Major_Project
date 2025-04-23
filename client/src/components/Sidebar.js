@@ -1,8 +1,9 @@
 // src/components/Sidebar.js
 import React from "react";
 import "../assets/css/Sidebar.css";
+import Quiz from "./Quiz";
 
-function Sidebar({ onTopicSelect }) {
+function Sidebar({ onTopicSelect, onStartQuiz }) {
   return (
     <div className="sidebar">
       <div className="sidebar-heading">
@@ -32,6 +33,8 @@ function Sidebar({ onTopicSelect }) {
         <li>
           <button>Section 4: Conclusion</button>
         </li>
+        {/* <li><Quiz></Quiz></li> */}
+        <li><button onClick={onStartQuiz}>Start Quiz</button></li>
       </ul>
     </div>
   );
