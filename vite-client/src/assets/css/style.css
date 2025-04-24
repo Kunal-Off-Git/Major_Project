@@ -7760,3 +7760,11 @@ html {
   top: 15px;
   position: absolute;
 }
+
+/* extra css */
+.course-progress-card {
+  width: 48%;
+  margin-left: 1rem;
+  padding: 10px;
+  
+}

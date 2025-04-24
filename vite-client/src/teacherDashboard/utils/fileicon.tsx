@@ -1,4 +1,5 @@
 import { FileText, Video, Image, Link, File } from "lucide-react";
+import React from "react";
 
 interface Resource {
   id: string;

@@ -25,7 +25,10 @@ import { ResourcesPage } from "./teacherDashboard/pages/ResourcesPage.jsx";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min"; // Import JS bundle for dropdowns to work
 import "./App.css";
-import StudentDashboard from "./components/StudentDashboard.jsx";
+import StudentDashboard from "./studentDashboard/StudentDashboard.jsx";
+import { StudentDashboard2 } from "./studentDashboard/StudentDashboard2.jsx";
+import { StudentDashboardContent } from "./studentDashboard/StudentDashboardContent.jsx";
+import { ProgressPage } from "./studentDashboard/ProgressPage.jsx";
 
 function App() {
   return (
@@ -43,6 +46,18 @@ function App() {
           <Route path="/Video" element={<Video />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/StudentDashboard" element={<StudentDashboard />} />
+          {/* <Route path="/StudentDashboard2" element={<StudentDashboard2 />} /> */}
+          <Route path="/StudentDashboard2/*" element={<StudentDashboard2 />}>
+            <Route index element={<StudentDashboardContent />} />
+            <Route path="students" element={<StudentsPage />} />
+            <Route path="assignments" element={<AssignmentsPage />} />
+            <Route path="schedule" element={<SchedulePage />} />
+            <Route path="messages" element={<MessagesPage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            <Route path="course-upload" element={<CourseUploadPage />} />
+            <Route path="student-progress" element={<ProgressPage />} />
+            <Route path="resources" element={<ResourcesPage />} />
+          </Route>
           <Route path="/teacherDashboard/*" element={<DashboardLayout />}>
             <Route index element={<DashboardContent />} />
             <Route path="students" element={<StudentsPage />} />

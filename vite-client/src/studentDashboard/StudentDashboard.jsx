@@ -6,7 +6,7 @@ import {
   CheckCircle,
   Bell,
 } from "lucide-react";
-import StudentSidebar from "./StudentSidebar"; // Import the StudentSidebar component
+import StudentSidebar from "../components/StudentSidebar"; // Import the StudentSidebar component
 import "../assets/css/StudentDashboard.css"; // Imported the CSS file
 
 const StudentDashboard = () => {

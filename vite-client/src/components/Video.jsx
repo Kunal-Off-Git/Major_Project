@@ -115,8 +115,10 @@ const languages = [
 function Video() {
   const [showTranscribe, setShowTranscribe] = useState(false);
   const [showTranslate, setShowTranslate] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("HTML");
   const [transcript, setTranscript] = useState("");
+  const [summary, setSummary] = useState("");
   const [source, setSource] = useState("/assets/video/HTML clip.mp4");
 
   const handleTranscribeClick = async (language, trans_text) => {
@@ -135,6 +137,36 @@ function Video() {
       if (response.ok) {
         setTranscript(data.translated_text);
         setShowTranslate(true);
+      } else {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Failed to translate text.");
+    }
+  };
+
+  useEffect(() => {
+    if (source) {
+      console.log("Updated Source:", source);
+    }
+  }, [source]);
+
+  const handleSummaryClick = async (trans_text) => {
+    console.log("clicked");
+    const transcript = trans_text;
+    try {
+      const response = await fetch("http://localhost:5001/summarize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ transcript }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setSummary(data.summary);
+        setShowSummary(true);
       } else {
         alert(data.error);
       }
@@ -271,7 +303,7 @@ JavaScript has many different frameworks and libraries that can be used, with it
               >
                 Transcript
               </button>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu scrollable-dropdown">
                 {languages.map((item) => (
                   <li>
                     <button
@@ -292,12 +324,19 @@ JavaScript has many different frameworks and libraries that can be used, with it
             >
               Translate Video to Hindi
             </button>
+            <button
+              className="btn btn-large ml-3"
+              onClick={() => handleSummaryClick(transcription)}
+            >
+              Summary
+            </button>
           </div>
           <div className="content-section">
             {showTranscribe && (
               <div className="transcribed">{transcription}</div>
             )}
             {showTranslate && <div className="translate">{transcript}</div>}
+            {showSummary && <div className="translate">{summary}</div>}
           </div>
         </div>
       </div>

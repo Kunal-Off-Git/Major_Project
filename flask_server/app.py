@@ -11,6 +11,7 @@ from pydub import AudioSegment
 from datetime import datetime
 import uuid
 from flask import send_from_directory
+from transformers import pipeline
 # from moviepy.video.fx.all import audio_fadein
 
 UPLOAD_FOLDER = 'uploads'
@@ -147,6 +148,23 @@ def translate():
         "translated_video_path": public_url
     })
 
+# Load the summarization model once when the app starts
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+@app.route('/summarize', methods=['POST'])
+def summarize():
+    data = request.get_json()
+
+    if not data or 'transcript' not in data:
+        return jsonify({'error': 'Missing transcript field in JSON'}), 400
+
+    transcript = data['transcript']
+
+    try:
+        summary = summarizer(transcript, max_length=150, min_length=50, do_sample=False)
+        return jsonify({'summary': summary[0]['summary_text']})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
