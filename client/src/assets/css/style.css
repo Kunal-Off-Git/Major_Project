@@ -7624,3 +7624,57 @@ html {
   opacity: 0.7;
   line-height: 1.5rem;
 }
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the login button */
+.btn3 {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn3:hover {
+  background-color: #0056b3;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  background:white; /* 🔥 Orange Background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  list-style: none;
+  /* padding: 5px 0; */
+  margin: 0;
+  margin-left: 20px;
+  display: block;
+  overflow: hidden;
+}
+
+/* Dropdown items */
+#dropdown-item1 {
+  display: block;
+  color: #0078ff; /* 🟣 Purple Text */
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+  padding: 10px;
+}
+
+/* Hover effect */
+#dropdown-item1:hover {
+  /* background-color: #0056b3; */
+  color: #9720f3; /* White Text on Hover */
+}
