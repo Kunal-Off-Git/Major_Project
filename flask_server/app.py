@@ -20,7 +20,7 @@ AUDIO_FOLDER = os.path.join(UPLOAD_FOLDER, 'audios')
 TRANSLATED_VIDEO_FOLDER = os.path.join(UPLOAD_FOLDER, 'translated_videos')
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 # Load the Whisper model (small model for demonstration; larger models are more accurate)
 model = whisper.load_model("base")
@@ -67,7 +67,7 @@ def transcribe():
     target_lang = request.json.get("lang", "hi")
 
     # Translate the transcript to the target language
-    translated = asyncio.run(translator.translate(transcript_text, dest=target_lang))
+    translated = translator.translate(transcript_text, dest=target_lang)
 
     # Return the translated text as JSON
     return jsonify({
@@ -88,7 +88,7 @@ def translate():
     text_string = request.form['text']
     target_language = request.form['lang']
 
-    translated = asyncio.run(translator.translate(text_string, dest=target_language))
+    translated = translator.translate(text_string, dest=target_language)
 
     audio_path = generate_filename('translated_audio', AUDIO_FOLDER, 'mp3')
     tts = gTTS(translated.text)
@@ -130,18 +130,6 @@ def translate():
 
     file_name = os.path.basename(output_video_path)
     public_url = f"http://localhost:5001/uploads/translated_videos/{file_name}"
-
-    # # Forcefully release the video file
-    # video_clip.reader.close()
-    # if video_clip.audio:
-    #     video_clip.audio.reader.close_proc()
-    # video_clip.close()
-    # audio_clip.close()
-
-    # # Cleanup temp files
-    # os.remove(video_path)
-    # os.remove(audio_path)
-    # os.remove(adjusted_audio_path)
 
     return jsonify({
         "message": "Video translated and processed successfully",

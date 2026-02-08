@@ -1,5 +1,6 @@
 // src/components/video.js
 import React, { useState, useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import Sidebar from "./Sidebar";
 import "../assets/css/Video.css";
 import Header from "./Header";
@@ -119,6 +120,7 @@ function Video() {
   const [selectedTopic, setSelectedTopic] = useState("HTML");
   const [transcript, setTranscript] = useState("");
   const [summary, setSummary] = useState("");
+  const [loading, setLoading] = useState(false);
   const [source, setSource] = useState("/assets/video/HTML clip.mp4");
 
   const handleTranscribeClick = async (language, trans_text) => {
@@ -137,6 +139,7 @@ function Video() {
       if (response.ok) {
         setTranscript(data.translated_text);
         setShowTranslate(true);
+        setShowSummary(false);
       } else {
         alert(data.error);
       }
@@ -154,6 +157,7 @@ function Video() {
 
   const handleSummaryClick = async (trans_text) => {
     console.log("clicked");
+    setLoading(true);
     const transcript = trans_text;
     try {
       const response = await fetch("http://localhost:5001/summarize", {
@@ -165,13 +169,17 @@ function Video() {
       });
       const data = await response.json();
       if (response.ok) {
+        console.log(data.summary);
         setSummary(data.summary);
         setShowSummary(true);
+        setLoading(false);
+        setShowTranslate(false);
       } else {
         alert(data.error);
       }
     } catch (error) {
       console.error(error);
+      setLoading(false);
       alert("Failed to translate text.");
     }
   };
@@ -184,6 +192,7 @@ function Video() {
 
   const handleTranslateClick = async (src, trans_text) => {
     console.log("clicked");
+    setLoading(true);
     try {
       const text = trans_text;
       const targetLang = "hi";
@@ -208,13 +217,17 @@ function Video() {
       if (response.ok) {
         console.log("working");
         console.log("Translated Video Path:", data.translated_video_path);
+        setLoading(false);
         setSource(data.translated_video_path);
         // console.log(source);
       } else {
         alert(data.error);
+        setLoading(false);
       }
     } catch (error) {
       console.error(error);
+      setLoading(false);
+
       alert("failed to upload file.");
     }
   };
@@ -337,6 +350,7 @@ JavaScript has many different frameworks and libraries that can be used, with it
             )}
             {showTranslate && <div className="translate">{transcript}</div>}
             {showSummary && <div className="translate">{summary}</div>}
+            {loading && <ClipLoader className="loading-icon" color="#36d7b7" />}
           </div>
         </div>
       </div>

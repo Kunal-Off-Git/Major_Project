@@ -10,7 +10,8 @@ const PORT = 5000;
 // Use environment variable if available
 const dbUrl = "mongodb://localhost:27017/User";
 
-mongoose.connect(dbUrl, { useUnifiedTopology: true })  // Omit `useNewUrlParser`
+mongoose
+  .connect(dbUrl, { useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -19,7 +20,6 @@ mongoose.connect(dbUrl, { useUnifiedTopology: true })  // Omit `useNewUrlParser`
   });
 
 // mongoose.connect("mongodb://127.0.0.1:27017/User");
-
 
 // Middleware
 app.use(cors({ origin: true, credentials: true }));
@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   UserModel.findOne({ email: email })
-    .then(user => {
+    .then((user) => {
       if (user) {
         // Compare password using bcrypt
         bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -55,7 +55,7 @@ app.post("/login", (req, res) => {
         res.json("No record existed");
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Error during login:", err);
       res.status(500).json("Error occurred while logging in");
     });
@@ -75,11 +75,11 @@ app.post("/register", (req, res) => {
     const newUser = { ...req.body, password: hashedPassword };
 
     UserModel.create(newUser)
-      .then(user => {
+      .then((user) => {
         console.log("User created:", user);
         res.json(user);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error creating user:", err);
         res.status(500).json({ error: "Failed to register user" });
       });

@@ -11,7 +11,7 @@ const courses = [
       "This Basics of Web Development course introduces you to the essential tools and languages needed to create functional, attractive websites from scratch. Starting with HTML, you’ll learn how to structure content and create a strong foundation for web pages, covering everything from headers and paragraphs to links and media integration. Next, the course covers CSS, where you’ll discover how to style and design your layouts, add colors, and ensure responsiveness across devices. Through interactive examples, you’ll gain hands-on practice, bringing web pages to life with styling, positioning, and animation basics.",
       "In the final portion of the course, you’ll learn JavaScript, the programming language that adds interactivity to websites. From understanding variables, loops, and functions to working with the Document Object Model (DOM), JavaScript will allow you to create responsive, dynamic pages. By the end, you’ll have developed foundational skills across HTML, CSS, and JavaScript, equipping you to build simple websites and continue exploring more advanced topics in web development. Ideal for beginners with no prior coding experience, this course is a perfect starting point for anyone interested in a career in web development or simply looking to learn a new, valuable skill.",
     ],
-    price: "Rs. 499",
+    price: "FREE",
   },
   {
     id: 2,

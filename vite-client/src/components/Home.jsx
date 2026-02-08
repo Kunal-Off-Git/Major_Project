@@ -18,30 +18,32 @@ import "../assets/css/style.css";
 import courses from "../data.js";
 
 function Home() {
-
   const LoginDropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
-
 
     return (
       <div className="dropdown">
         <button className="btn btn3" onClick={() => setIsOpen(!isOpen)}>
           Login
         </button>
-        
+
         {isOpen && (
           <ul className="dropdown-menu">
             <li>
-              <a href="/login/teacher" id="dropdown-item1">Login as Teacher</a>
+              <a href="/login/teacher" id="dropdown-item1">
+                Login as Teacher
+              </a>
             </li>
             <li>
-              <a href="/register" id="dropdown-item1">Login as Student</a>
+              <a href="/register" id="dropdown-item1">
+                Login as Student
+              </a>
             </li>
           </ul>
         )}
       </div>
     );
-  }
+  };
 
   return (
     <>
@@ -117,7 +119,7 @@ function Home() {
                               </a>
                             </li>
                             <li className="button-header">
-                                <LoginDropdown/>
+                              <LoginDropdown />
                             </li>
                           </ul>
                         </nav>

@@ -28,7 +28,7 @@ export const Header = () => {
           <NotificationsDropdown />
           <div className="d-flex align-items-center gap-3">
             <Image
-              src={user.avatar}
+              src={"../assets/img/icon/image.png"}
               alt="Profile"
               roundedCircle
               width={40}
@@ -36,8 +36,8 @@ export const Header = () => {
               className="border border-primary border-opacity-25"
             />
             <div>
-              <p className="mb-0 fw-semibold text-dark">{user.name}</p>
-              <p className="mb-0 text-muted small">{user.role}</p>
+              <p className="mb-0 fw-semibold text-dark">Raj tiwari</p>
+              <p className="mb-0 text-muted small">student</p>
             </div>
           </div>
         </div>
